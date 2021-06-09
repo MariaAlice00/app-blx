@@ -9,9 +9,9 @@
             <ul>
                 <li>Nome</li>
                 <li>Telefone whatsapp</li>
+                <li>Senha(?)</li>
             </ul>
         </li>
-        <li>Senha(?)</li>
         <li>Uma produto tem:
             <ul>
                 <li>Nome</li>
