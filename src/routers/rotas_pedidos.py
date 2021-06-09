@@ -32,7 +32,7 @@ def listar(session: Session = Depends(get_db)):
 
 
 @router.get('/pedidos/{usuario_id}/pedidos', response_model=List[PedidoSimples])
-def listar_pedidos(usuario_id: int, session: Session = Depends(get_db)):
+def listar_meus_pedidos(usuario_id: int, session: Session = Depends(get_db)):
     pedidos = RepositorioPedido(session).listar_meus_pedidos_por_usuario_id(usuario_id)
 
     if not pedidos:
