@@ -1,6 +1,8 @@
 from pydantic import BaseModel
 from typing import Optional, List
 
+from src.infra.sqlalchemy.config.database import Base
+
 
 class ProdutoSimples(BaseModel):
     id: Optional[int] = None
@@ -29,6 +31,16 @@ class UsuarioSimples(BaseModel):
 
     class Config:
         orm_mode = True
+
+
+class LoginData(BaseModel):
+    senha: str
+    telefone: str
+    
+
+class LoginSucesso(BaseModel):
+    usuario: UsuarioSimples
+    access_token: str
 
 
 class Produto(BaseModel):
