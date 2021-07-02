@@ -1,6 +1,8 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from src.routers import rotas_produtos, rotas_auth, rotas_pedidos
+from src.jobs.write_notification import write_notification
+from src.middlewares.timer import SimpleASGIMiddleware
 
 
 app = FastAPI()
@@ -16,6 +18,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.add_middleware(SimpleASGIMiddleware)
+
 # Rotas PRODUTOS
 app.include_router(rotas_produtos.router) # incluir os arquivos de rota
 
@@ -24,3 +28,11 @@ app.include_router(rotas_auth.router, prefix='/auth')
 
 # Rotas PEDIDOS
 app.include_router(rotas_pedidos.router)
+
+# Background Tasks
+@app.post('/send_email/{email}')
+def send_email(email: str, background: BackgroundTasks):
+    background.add_task(write_notification, email, 'Como vai?!')
+    return {'OK': 'Mensagem enviada'}
+
+

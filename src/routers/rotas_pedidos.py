@@ -12,6 +12,7 @@ router = APIRouter()
 
 @router.post('/pedidos', status_code=status.HTTP_201_CREATED, response_model=Pedido)
 def fazer_pedido(pedido: Pedido, usuario: Usuario = Depends(obter_usuario_logado), session: Session = Depends(get_db)):
+    pedido.usuario_id = usuario.id
     pedido_criado = RepositorioPedido(session).gravarpedido(pedido)
     return pedido_criado
 

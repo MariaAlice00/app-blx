@@ -1,6 +1,5 @@
 from sqlalchemy import update, delete, select
 from sqlalchemy.orm import Session
-#from sqlalchemy.sql.expression import select
 from src.schemas import schemas
 from src.infra.sqlalchemy.models import models
 
