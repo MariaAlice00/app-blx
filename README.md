@@ -47,7 +47,6 @@
         <li>Python + FastAPI</li>
         <li>Será uma API REST</li>
         <li>Banco de Dados: Postgres e/ou MongoDB (firebase firestore)</li>
-        <li>Docker para o Postgres</li>
         <li>MVC</li>
         <li>Domain Driven Design (DDD) e Arquitetura Limpa (Clean Architecture)</li>
     </ul>
